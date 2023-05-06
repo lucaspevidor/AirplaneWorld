@@ -24,27 +24,23 @@ export class Runway {
 	 * @param heading The runway heading, in degrees.
 	 */
     constructor(id: number, airportCode: string, length: number, width: number, heading: number) {
-        if (length <= 0) {
+        if (length <= 0) 
             throw new Error("Runway length has to be bigger than 0m");
-        }
-        if (width <= 0) {
+        if (width <= 0) 
             throw new Error("Runway width has to be bigger than 0m");
-        }
         if (heading < 0 || heading > 360)
-        {
             throw new Error("Heading has to be between 0 and 360 degrees");
-        }
+        if (airportCode === "")
+            throw new Error("Airport code cannot be empty");
 		
         this._id = id;
         this._airportCode = airportCode;
         this._length = length;
         this._width = width;
-        if (heading == 0) {
-            this._heading = 360;
-        } else {
-            this._heading = heading;
-        }
+        this._heading = heading;
         this._number = Math.round(this._heading / 10);
+        if (this._number === 0)
+            this._number = 36;
     }
 
     /**
@@ -92,12 +88,10 @@ export class Runway {
         if (value < 0 || value > 360) {
             throw new Error("Heading has to be between 0 and 360 degrees");
         }
-        if (value == 0) {
-            this._heading = 360;
-        } else {
-            this._heading = value;
-        }
+        this._heading = value;
 
         this._number = Math.round(this._heading / 10);
+        if (this._number === 0)
+            this._number = 36;
     }
 }
