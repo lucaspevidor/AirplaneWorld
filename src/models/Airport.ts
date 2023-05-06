@@ -12,6 +12,8 @@ export class Airport {
     public runways: number[];
 
     constructor(code: string, location: Location) {
+        if (code === "")
+            throw new Error("Airport code cannot be empty");
         this.code = code;
         this.location = location;
         this.runways = [];
