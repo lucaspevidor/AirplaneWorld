@@ -29,19 +29,19 @@ export class AirportManager {
      * Creates an aiport with a given code and location.
      * @param code The airport unique ID code
      * @param location Lat-Lon location of the airport
-     * @returns Returns true if the airport is created successfully.
-     *          Returns false if an airport with the provided code already exists.
+     * @returns Returns the created airport instance. Throws if an airport with 
+     *          the provided code already exists or invalid code provided     
      */
-    CreateAirport(code: string, location: Location): boolean {
-        if (code in this._airports) {
-            return false;
-        }
+    CreateAirport(code: string, location: Location): Airport {
+        if (code === "")
+            throw new Error("Invalid airport code provided");
+        if (code in this._airports)
+            throw new Error("An airport with the provided code already exists");        
 
         const airport = new Airport(code, location);
         this._airports[code] = airport;
-        return true;
+        return airport;
     }
-
     /**
      * Removes the airport instance.
      * @param airport Airport instance to be deleted.
