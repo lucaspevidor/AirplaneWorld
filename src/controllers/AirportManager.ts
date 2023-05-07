@@ -124,7 +124,7 @@ export class AirportManager {
      */
     RemoveRunwayFromAirport(airportCode: string, runwayId: number) : boolean {
         const airport = this.GetAirport(airportCode);
-        if (!airport || !(runwayId in airport.runways))
+        if (!airport || !(airport.runways.includes(runwayId)))
             return false;
 
         if (!RunwayManager.GetInstance().DeleteRunwayById(runwayId))
