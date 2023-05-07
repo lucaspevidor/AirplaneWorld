@@ -11,20 +11,20 @@ describe("Route", () => {
 
 
     test("Route creation", () => {
-        const route = new Route(1, airport1, airport2, airport3);
+        const route = new Route(1, airport1.code, airport2.code, airport3.code);
         expect(route).toBeInstanceOf(Route);
         expect(route.id).toEqual(1);
-        expect(route.origin).toEqual(airport1);
-        expect(route.destination).toEqual(airport2);
-        expect(route.alternate).toEqual(airport3);
+        expect(route.origin).toEqual(airport1.code);
+        expect(route.destination).toEqual(airport2.code);
+        expect(route.alternate).toEqual(airport3.code);
     });
 
     test("Route creation with undefined alternate", () => {
-        const route = new Route(2, airport1, airport2);
+        const route = new Route(2, airport1.code, airport2.code);
         expect(route).toBeInstanceOf(Route);
         expect(route.id).toEqual(2);
-        expect(route.origin).toEqual(airport1);
-        expect(route.destination).toEqual(airport2);
+        expect(route.origin).toEqual(airport1.code);
+        expect(route.destination).toEqual(airport2.code);
         expect(route.alternate).toBeUndefined();
     });
 });
