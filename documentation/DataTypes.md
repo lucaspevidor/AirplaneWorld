@@ -25,6 +25,7 @@
 | id | int [PK] |
 | origin | airport |
 | destination | airport |
+| alternate | airport |
 
 | flight | object |
 | --- | --- |
