@@ -57,6 +57,8 @@ export class RunwayManager {
 	 * @returns {boolean} Returns true if the runway was correctly deleted.
 	 */
     DeleteRunway(runway: Runway): boolean {
+        if (!(runway.id in this._runways))
+            return false;
         delete this._runways[runway.id];
         return true;
     }
@@ -67,9 +69,8 @@ export class RunwayManager {
 	 * @returns {boolean} Returns true if the runway was correctly deleted. False if not.
 	 */
     DeleteRunwayById(id: number): boolean {
-        if (!(id in this._runways)) {
-            return false;
-        }
+        if (!(id in this._runways))
+            return false;    
         return this.DeleteRunway(this._runways[id]);	
     }
 
@@ -78,7 +79,7 @@ export class RunwayManager {
 	 * @param id The unique ID of the runway.
 	 * @returns {Runway | null} Returns the runway instance. Returns null if an invalid ID is provided.
 	 */
-    GetRunway(id: number): Runway | null {
+    GetRunway(id: number): Runway | undefined {
         return this._runways[id];
     }
 
@@ -95,9 +96,9 @@ export class RunwayManager {
         }
         const runway = this._runways[id];
 
-        runway.length = info.length ? info.length : runway.length;
-        runway.width = info.width ? info.width : runway.width;
-        runway.heading = info.heading ? info.heading : runway.heading;
+        runway.length = info.length !== undefined ? info.length : runway.length;
+        runway.width = info.width !== undefined ? info.width : runway.width;
+        runway.heading = info.heading !== undefined ? info.heading : runway.heading;
 
         return true;
     }
