@@ -10,7 +10,7 @@
 | routes | object[] |
 | departing_flights | object[] |
 | arriving_flights | object[] |
-| airplanes | object[] |
+| aircrafts | object[] |
 
 | runway | object |
 | --- | --- |
@@ -31,7 +31,7 @@
 | --- | --- |
 | id | int [PK] |
 | route | route |
-| airplane | airplane |
+| aircraft | aircraft |
 | departure | datetime |
 | arrival | datetime |
 | status | flight_status |
@@ -53,7 +53,7 @@
 | incident | 12 |
 | accident | 13 |
 
-| airplane_size | id |
+| aircraft_size | id |
 | --- | --- |
 | very_small | 0 |
 | small | 1 |
@@ -61,12 +61,12 @@
 | large | 3 |
 | very_large | 4 |
 
-| airplane_category | id |
+| aircraft_category | id |
 | --- | --- |
 | civilian | 0 |
 | military | 1 |
 
-| airplane_prop_type | id |
+| aircraft_prop_type | id |
 | --- | --- |
 | single_engine | 0 |
 | multi_engine | 1 |
@@ -74,7 +74,7 @@
 | helicopter | 3 |
 | lighter_than_air | 4 |
 
-| airplane_prop_subtype | id | airplane_prop_type[] |
+| aircraft_prop_subtype | id | aircraft_prop_type[] |
 | --- | --- | --- |
 | piston | 0 | single_engine, multi_engine |
 | turbo_prop | 1 | single_engine, multi_engine |
@@ -99,7 +99,7 @@
 | uav | 20 | single_engine, multi_engine
 | space | 21 | single_engine, multi_engine |
 
-| airplane_mission | id | airplane_category[] |
+| aircraft_mission | id | aircraft_category[] |
 | --- | --- | --- |
 | transport | 0 | civilian, military |
 | attack | 1 | military |
@@ -121,17 +121,17 @@
 | agricultural | 18 | civilian |
 | research | 19 | civilian, military |
 
-| airplane_model | object |
+| aircraft_model | object |
 | --- | --- |
 | id | integer [PK] |
 | name | string |
 | capacity | integer |
 | manufacturer | string |
-| size | airplane_size |
-| category | airplane_category[] |
-| prop_type | airplane_prop_type |
-| prop_subtype | airplane_prop_subtype |
-| available_missions | airplane_mission[] |
+| size | aircraft_size |
+| category | aircraft_category[] |
+| prop_type | aircraft_prop_type |
+| prop_subtype | aircraft_prop_subtype |
+| available_missions | aircraft_mission[] |
 | gross_weight | float |
 | fuel_capacity | float |
 | efficiency | float |
@@ -139,10 +139,10 @@
 | max_height | float |
 | max_weight | float |
 
-| airplane | object |
+| aircraft | object |
 | --- | --- |
 | id | integer [PK] |
 | tail_code | string |
-| model | airplane_model |
+| model | aircraft_model |
 | year | integer |
 | status | string |
