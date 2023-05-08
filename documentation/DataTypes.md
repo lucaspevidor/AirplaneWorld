@@ -3,14 +3,17 @@
 | id | integer [PK] |
 | name | string |
 | code | string [UNIQUE] |
-| coordinates | object |
-| latitude | float |
-| longitude | float |
+| coordinates | Location |
 | runways | object[] |
 | routes | object[] |
 | departing_flights | object[] |
 | arriving_flights | object[] |
 | aircrafts | object[] |
+
+| location | object |
+| --- | --- |
+| latitude | float |
+| longitude | float |
 
 | runway | object |
 | --- | --- |
@@ -146,3 +149,5 @@
 | model | aircraft_model |
 | year | integer |
 | status | string |
+| visible | boolean |
+| position | Location |
