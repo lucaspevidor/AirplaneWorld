@@ -5,10 +5,22 @@ import { AircraftCategory, AircraftMission, AircraftModel, AircraftPropSubType, 
 
 describe("Aircraft", () => {
     const aircraftModel = new AircraftModel(
-        0, "747-800", 500, "Boeing", AircraftSize.VeryLarge,
-        [AircraftCategory.Civilian], AircraftPropType.MultiEngine,
-        AircraftPropSubType.TurboJet, [AircraftMission.Transport],
-        100000, 10000, 0.5, 1000, 40000, 150000
+        0, "747-800", 
+        {
+            capacity: 500,
+            manufacturer: "Boeing",
+            size: AircraftSize.VeryLarge,
+            category: [AircraftCategory.Civilian],
+            propType: AircraftPropType.MultiEngine,
+            propSubType: AircraftPropSubType.TurboJet,
+            availableMissions: [AircraftMission.Transport, AircraftMission.Cargo],
+            grossWeight: 100000,
+            fuelCapacity: 10000,
+            efficiency: 0.5,
+            maxSpeed: 1000,
+            maxHeight: 40000,
+            maxWeight: 150000
+        }
     );
 
     test("Create Aircraft", () => {
