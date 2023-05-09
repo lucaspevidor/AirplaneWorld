@@ -31,6 +31,8 @@ export class AirportManager {
      * @param location Lat-Lon location of the airport
      * @returns Returns the created airport instance. Throws if an airport with 
      *          the provided code already exists or invalid code provided     
+     * @throws {Error} If the provided airport code is empty.
+     * @throws {Error} If the provided airport code already exists.
      */
     CreateAirport(code: string, location: Location): Airport {
         if (code === "")

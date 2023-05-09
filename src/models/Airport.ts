@@ -11,6 +11,12 @@ export class Airport {
     public location: Location;
     public runways: number[];
 
+    /**
+     * Creates an instance of an Airport.
+     * @param code - The airport unique code.
+     * @param location - The airport lat-lon location.
+     * @throws {Error} If the provided code is empty.
+     */
     constructor(code: string, location: Location) {
         if (code === "")
             throw new Error("Airport code cannot be empty");

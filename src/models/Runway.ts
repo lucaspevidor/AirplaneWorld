@@ -60,6 +60,7 @@ export class Runway {
 	
     /**
 	 * Gets or sets the length of the runway, in meters.
+     * @throws {Error} If the provided length is not bigger than 0.
 	 */
     get length(): number { return this._length; }
     set length(value: number) {
@@ -71,6 +72,7 @@ export class Runway {
 
     /**
 	 * Gets or sets the width of the runway, in meters.
+     * @throws {Error} If the provided width is not bigger than 0.
 	 */
     get width(): number { return this._width; }
     set width(value: number) {
@@ -82,6 +84,7 @@ export class Runway {
 
     /**
 	 * Gets or sets the heading of the runway, in degrees.
+     * @throws {Error} If the provided heading is not between 0 and 360 degrees.
 	 */
     get heading(): number { return this._heading; }
     set heading(value: number) {

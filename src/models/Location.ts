@@ -22,6 +22,7 @@ export class Location {
 	 * Throws an error in case it is not.
 	 * @param lat Latitude coordinate to be validated.
 	 * @returns The validated latitude coordinate.
+     * @throws {Error} If the provided latitude is not between -90 and 90 degrees.
 	 */
     private ValidateLat(lat: number): number {
         if (lat < -90 || lat > 90)
@@ -34,6 +35,7 @@ export class Location {
 	 * Throws an error in case it is not.
 	 * @param lon Longitude coordinate to be validated.
 	 * @returns The validated longitude coordinate.
+     * @throws {Error} If the provided longitude is not between -180 and 180 degrees.
 	 */
     private ValidateLon(lon:number): number {
         if (lon < -180 || lon > 180)
@@ -44,6 +46,7 @@ export class Location {
     /**
 	 * Gets or sets the longitude property.
 	 * Longitude has to be between -180 and 180 degrees.
+     * @throws {Error} If the provided longitude is not between -180 and 180 degrees.
 	 */
     get lon(): number { return this._lon; }
     set lon(value: number) {
@@ -53,6 +56,7 @@ export class Location {
     /**
 	 * Gets or sets the latitude property.
 	 * Latitude has to be between -90 and 90 degrees.
+     * @throws {Error} If the provided latitude is not between -90 and 90 degrees.
 	 */
     get lat(): number { return this._lat; }
     set lat(value: number) {
