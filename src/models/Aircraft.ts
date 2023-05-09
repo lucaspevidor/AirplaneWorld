@@ -26,7 +26,7 @@ export class Aircraft {
      * @param model - The model of the aircraft.
      * @param year - The fabrication year of the aircraft.
      * @throws {Error} If the tail code is empty.
-     * @throws {Error} If the year is before 1906.
+     * @throws {Error} If the year is before 1903.
      */
     public constructor(
         id: number,
@@ -45,8 +45,8 @@ export class Aircraft {
 
         if (tailCode === "")
             throw new Error("Tail code cannot be empty");
-        if (year < 1906)
-            throw new Error("Year cannot be before 1906");
+        if (year < 1903)
+            throw new Error("Year cannot be before 1903");
     }
 
     /**
@@ -72,12 +72,12 @@ export class Aircraft {
 
     /**
      * Gets or sets the fabrication year of the aircraft.
-     * @throws {Error} If the year is before 1906.
+     * @throws {Error} If the year is before 1903.
     */
     get year() { return this._year; }
     set year(value: number) {
-        if (value < 1906)
-            throw new Error("Year cannot be before 1906");
+        if (value < 1903)
+            throw new Error("Year cannot be before 1903");
         this._year = value;
     }
 }
