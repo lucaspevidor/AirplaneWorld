@@ -1,3 +1,6 @@
+import { injectable } from "inversify";
+import { IRoute } from "./Route.interface";
+
 /**
  * Represents a route airplanes can follow
  * @property {number} id - Unique ID of the route
@@ -5,7 +8,8 @@
  * @property {string} destination - Route's destination airport unique code
  * @property {string | undefined} alternate - Route's alternative destination airport unique code
  */
-export class Route {
+@injectable()
+export class Route implements IRoute {
     public readonly id: number;
     public readonly origin: string;
     public readonly destination: string;
