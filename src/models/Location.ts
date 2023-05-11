@@ -1,9 +1,11 @@
+import { ILocation } from "./Location.interface";
+
 /**
  * Represents a point on a map using Lat-Lon coordinates
  * @property {number} lat - Latitude
  * @property {number} lon - Longitude 
 **/
-export class Location {
+export class Location implements ILocation {
     private _lat: number;
     private _lon: number;
 
