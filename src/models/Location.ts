@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import { ILocation } from "./Location.interface";
 
 /**
@@ -5,6 +6,7 @@ import { ILocation } from "./Location.interface";
  * @property {number} lat - Latitude
  * @property {number} lon - Longitude 
 **/
+@injectable()
 export class Location implements ILocation {
     private _lat: number;
     private _lon: number;
