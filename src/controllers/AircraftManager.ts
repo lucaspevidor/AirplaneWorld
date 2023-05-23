@@ -3,15 +3,17 @@ import { AircraftModel } from "../models/AircraftModel";
 import { Location } from "../models/Location";
 
 /**
- * Single class responsible for managing all the aircrafts in the application.
+ * Singleton class responsible for managing all the aircrafts in the application.
  * Has to be called using the GetInstance method.
  */
 export class AircraftManager {
     private static _instance: AircraftManager;
     private _aircrafts: {[id: number]: Aircraft};
+    private _lastId;
 
     private constructor() {
         this._aircrafts = {};
+        this._lastId = 0;
     }
 
     /**
@@ -33,10 +35,10 @@ export class AircraftManager {
      * @param loc The location of the aircraft
      * @returns Returns the created aircraft instance.
      */
-    CreateAircraft(tailCode: string, model: AircraftModel, year: number, loc: Location): Aircraft {
-        const newId = Object.keys(this._aircrafts).length;
-        const aircraft = new Aircraft(newId, tailCode, model, year, true, loc);
-        this._aircrafts[newId] = aircraft;
+    CreateAircraft(tailCode: string, model: AircraftModel, year: number, loc: Location): Aircraft {        
+        const aircraft = new Aircraft(this._lastId, tailCode, model, year, true, loc);
+        this._aircrafts[this._lastId] = aircraft;
+        this._lastId++;
 
         return aircraft;
     }

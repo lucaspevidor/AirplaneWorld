@@ -8,9 +8,11 @@ import { AirportManager } from "./AirportManager";
 export class RouteManager {
     private static _instance: RouteManager;
     private _routes: {[id: number]: Route};
+    private _lastId: number;
 
     private constructor() {
         this._routes = {};
+        this._lastId = 0;
     }
 
     /**
@@ -40,9 +42,10 @@ export class RouteManager {
             return undefined;
         }
 
-        const newId = Object.keys(this._routes).length;
+        const newId = this._lastId;
         const route = new Route(newId, originCode, destinationCode, alternateCode);
         this._routes[newId] = route;
+        this._lastId++;
         return route;
     }
 

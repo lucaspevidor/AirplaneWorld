@@ -19,9 +19,11 @@ export type RunwayInfo = {
 export class RunwayManager {
     private static instance: RunwayManager;
     private _runways: {[id: number]: Runway };
+    private _lastId;
 
     private constructor() {		
         this._runways = {};
+        this._lastId = 0;
     }
 
     /**
@@ -44,9 +46,10 @@ export class RunwayManager {
 	 * @returns {Runway} The created runway.
 	 */
     CreateRunway(airportCode: string, length: number, width: number, heading: number): Runway {
-        const newId = Object.keys(this._runways).length;
+        const newId = this._lastId;
         const runway = new Runway(newId, airportCode, length, width, heading);
         this._runways[newId] = runway;
+        this._lastId++;
 
         return runway;
     }
